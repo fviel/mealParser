@@ -1,11 +1,11 @@
-package com.fviel.mealParser.meal.entities;
+package com.fviel.mealParser.meal.dtos;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 import java.time.LocalDate;
 
 @Data
-public class Meal {
+public class MealDto {
     @lombok.Getter(onMethod_ = {@JsonProperty("id")})
     @lombok.Setter(onMethod_ = {@JsonProperty("id")})
     private long id;

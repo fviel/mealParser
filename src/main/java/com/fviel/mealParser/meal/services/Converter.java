@@ -5,11 +5,9 @@ package com.fviel.mealParser.meal.services;
 import java.io.IOException;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.fviel.mealParser.meal.entities.Meal;
+import com.fviel.mealParser.meal.dtos.MealDto;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import java.util.*;
-import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.time.ZoneOffset;
@@ -67,11 +65,11 @@ public class Converter {
     }
     // Serialize/deserialize helpers
 
-    public static Meal fromJsonString(String json) throws IOException {
+    public static MealDto fromJsonString(String json) throws IOException {
         return getObjectReader().readValue(json);
     }
 
-    public static String toJsonString(Meal obj) throws JsonProcessingException {
+    public static String toJsonString(MealDto obj) throws JsonProcessingException {
         return getObjectWriter().writeValueAsString(obj);
     }    
 
@@ -89,8 +87,8 @@ public class Converter {
             }
         });
         mapper.registerModule(module);
-        reader = mapper.readerFor(Meal.class);
-        writer = mapper.writerFor(Meal.class);
+        reader = mapper.readerFor(MealDto.class);
+        writer = mapper.writerFor(MealDto.class);
     }
 
     private static ObjectReader getObjectReader() {
